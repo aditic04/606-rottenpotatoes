@@ -2,15 +2,74 @@
 
 <% content_for :title, "Movies" %>
 
-<h1>Movies</h1>
+<div class="index-header">
+  <div>
+    <h1>RottenPotatoes Movies</h1>
+    <p>Browse the collection or sort movies by title, rating, and release date.</p>
+  </div>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+  <%= link_to "+ Add Movie", new_movie_path, class: "button primary-button" %>
 </div>
 
-<%= link_to "New movie", new_movie_path %>
+<table>
+  <thead>
+    <tr>
+      <th class="<%= @sort == "title" ? "sorted-#{@direction}" : "" %>">
+        <%= link_to movies_path(
+          sort: "title",
+          direction: @sort == "title" && @direction == "asc" ? "desc" : "asc"
+        ) do %>
+          Title
+          <% if @sort == "title" %>
+            <span class="sort-indicator"><%= @direction == "asc" ? "↑" : "↓" %></span>
+          <% end %>
+        <% end %>
+      </th>
+
+      <th class="<%= @sort == "rating" ? "sorted-#{@direction}" : "" %>">
+        <%= link_to movies_path(
+          sort: "rating",
+          direction: @sort == "rating" && @direction == "asc" ? "desc" : "asc"
+        ) do %>
+          Rating
+          <% if @sort == "rating" %>
+            <span class="sort-indicator"><%= @direction == "asc" ? "↑" : "↓" %></span>
+          <% end %>
+        <% end %>
+      </th>
+
+      <th class="<%= @sort == "release_date" ? "sorted-#{@direction}" : "" %>">
+        <%= link_to movies_path(
+          sort: "release_date",
+          direction: @sort == "release_date" && @direction == "asc" ? "desc" : "asc"
+        ) do %>
+          Release Date
+          <% if @sort == "release_date" %>
+            <span class="sort-indicator"><%= @direction == "asc" ? "↑" : "↓" %></span>
+          <% end %>
+        <% end %>
+      </th>
+
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.rating %></td>
+        <td><%= movie.release_date.strftime("%B %d, %Y") if movie.release_date %></td>
+        <td><%= link_to "Show", movie %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td colspan="4">
+        Total Movies: <%= @movies.count %>
+      </td>
+    </tr>
+  </tfoot>
+</table>

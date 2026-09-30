@@ -10,12 +10,12 @@ more_movies = [
     release_date: "19-Feb-2021" },
   { title: "CODA", rating: "PG-13",
     release_date: "13-Aug-2021" },
-  { title: "Interstellar", rating: "PG-13",
-    release_date: "07-Nov-2014" },
-  { title: "The Dark Knight", rating: "PG-13",
-    release_date: "18-Jul-2008" },
-  { title: "The Truman Show", rating: "PG",
-    release_date: "05-Jun-1998" }
+  { title: "Kabhi Khushi Kabhi Gham", rating: "PG",
+    release_date: "14-Dec-2001" },
+  { title: "3 Idiots", rating: "PG-13",
+    release_date: "25-Dec-2009" },
+  { title: "Mission Mangal", rating: "PG",
+    release_date: "15-Aug-2019" }
 ]
 
 more_movies.each do |movie|

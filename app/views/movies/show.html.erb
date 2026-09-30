@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, @movie.title %>
+
+<p class="notice"><%= notice %></p>
+
+<h1 class="page-title">Movie Details</h1>
 
 <%= render @movie %>
 
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
+<div class="page-actions">
+  <%= link_to "Edit movie", edit_movie_path(@movie), class: "secondary-link" %>
+  <%= link_to "← Back to movies", movies_path, class: "secondary-link" %>
+</div>
 
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+<div class="delete-action">
+  <%= button_to "Delete movie",
+                @movie,
+                method: :delete,
+                class: "delete-button",
+                data: { turbo_confirm: "Are you sure you want to delete this movie?" } %>
 </div>
