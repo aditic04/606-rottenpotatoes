@@ -56,12 +56,23 @@
 
   <tbody>
     <% @movies.each do |movie| %>
-      <tr>
-        <td><%= movie.title %></td>
-        <td><%= movie.rating %></td>
-        <td><%= movie.release_date.strftime("%B %d, %Y") if movie.release_date %></td>
-        <td><%= link_to "Show", movie %></td>
-      </tr>
+    <tr>
+      <td class="<%= @sort == "title" ? "sorted-#{@direction}" : "" %>">
+        <%= movie.title %>
+      </td>
+
+      <td class="<%= @sort == "rating" ? "sorted-#{@direction}" : "" %>">
+        <%= movie.rating %>
+      </td>
+
+      <td class="<%= @sort == "release_date" ? "sorted-#{@direction}" : "" %>">
+        <%= movie.release_date.strftime("%B %d, %Y") if movie.release_date %>
+      </td>
+
+      <td>
+        <%= link_to "Show", movie %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 

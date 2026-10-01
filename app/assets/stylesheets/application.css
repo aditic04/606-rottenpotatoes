@@ -116,12 +116,19 @@ tbody tr:hover {
 }
 
 /* Highlight the currently sorted column */
-th.sorted-asc {
+.sorted-asc {
   background-color: #d8f3dc;
 }
 
-th.sorted-desc {
+.sorted-desc {
   background-color: #ffe5b4;
+}
+th.sorted-asc {
+  background-color: #adf8b8;
+}
+
+th.sorted-desc {
+  background-color: #fad184;
 }
 
 .sort-indicator {
